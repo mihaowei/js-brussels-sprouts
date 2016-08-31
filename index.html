@@ -12,25 +12,20 @@
        * content in a separate file.
        *
        */
-
       body {
         font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
       }
-
       div.container {
         margin-left: 10%;
         margin-right: 10%;
       }
-
       code {
         background-color: LightGrey;
         padding: 0.25rem 0.5rem;
       }
-
-      #dishes {
+      /*#dishes {
         display: none;
-      }
-
+      }*/
     </style>
   </head>
 
@@ -41,7 +36,9 @@
         <li>Roasted Brussels Sprouts</li>
       </ul>
 
-      <button onclick="hideReveal('dishes')" id="click-for-more">Click for more.</button>
+      <!-- <button onclick="hideReveal('dishes')" id="click-for-more">Click for more.</button> -->
+      <button id="click-for-more">Click for more.</button>
+
 
       <hr />
       <h2>Assignment Instructions</h2>
@@ -65,7 +62,6 @@
        * content in a separate file.
        *
        */
-
       // This is the array of data.
       var dishes = [
         "Roasted Brussels Sprouts",
@@ -88,10 +84,8 @@
         "Smoky Buttered Brussels Sprouts",
         "Jelly Bean Ice Cream",
         "Brussels Sprouts and Egg Salad with Hazelnuts"]
-
       var goodDishes = [];
       var badDishes = [];
-
       for (var i = 1; i < dishes.length; i++) {
         if (dishes[i].includes("Brussels Sprouts")) {
           goodDishes.push(dishes[i]);
@@ -99,20 +93,21 @@
           badDishes.push(dishes[i]);
         }
       };
-      for (var i = 0; i < goodDishes.length; i++) {
-        var dishList = document.getElementById('dishes');
-        var dishListItem = document.createElement('li');
-        var textNode = document.createTextNode(goodDishes[i]);
-        dishList.appendChild(dishListItem);
-        dishListItem.appendChild(textNode);
+
+      var button = document.getElementById("click-for-more");
+      button.addEventListener("click", populate, false);
+      // button.addEventListener("onclick", populate);
+
+      function populate() {
+        alert("entering function");
+        for (var i = 0; i < goodDishes.length; i++) {
+          var dishList = document.getElementById('dishes');
+          var dishListItem = document.createElement('li');
+          var textNode = document.createTextNode(goodDishes[i]);
+          dishList.appendChild(dishListItem);
+          dishListItem.appendChild(textNode);
+        }
       }
-
-      function hideReveal(id) {
-        var list = document.getElementById(id);
-        list.style.display = list.style.display == "block" ? "none" : "block";
-      };
-      // document.getElementById('click-for-more').addEventListener("click", reveal);
-
 
     </script>
   </body>
