@@ -98,14 +98,17 @@
       button.addEventListener("click", populate, false);
       // button.addEventListener("onclick", populate);
 
+      var booleanTrigger = false;
       function populate() {
-        alert("entering function");
-        for (var i = 0; i < goodDishes.length; i++) {
-          var dishList = document.getElementById('dishes');
-          var dishListItem = document.createElement('li');
-          var textNode = document.createTextNode(goodDishes[i]);
-          dishList.appendChild(dishListItem);
-          dishListItem.appendChild(textNode);
+        if (booleanTrigger == false) {
+          for (var i = 0; i < goodDishes.length; i++) {
+            var dishList = document.getElementById('dishes');
+            var dishListItem = document.createElement('li');
+            var textNode = document.createTextNode(goodDishes[i]);
+            dishList.appendChild(dishListItem);
+            dishListItem.appendChild(textNode);
+          }
+          booleanTrigger = true;
         }
       }
 
